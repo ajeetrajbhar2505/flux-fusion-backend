@@ -3,7 +3,8 @@ const crypto = require('crypto');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
+var dotenv = require('dotenv');
+dotenv.config()
 bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,8 +16,8 @@ app.listen(3000,()=>{
 
 // Initialize Razorpay
 const razorpay = new Razorpay({
-  key_id: 'rzp_test_bi1qvKeFE2Pz31',
-  key_secret: 'zPPhiUUisfRbURg4qUYBrDXU', // Replace with your Razorpay key secret
+  key_id: process.env.key_id,
+  key_secret: process.env.key_secret, // Replace with your Razorpay key secret
 });
 
 // Create a Razorpay order API
